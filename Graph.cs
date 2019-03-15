@@ -40,13 +40,13 @@ namespace Graph{
 			Array.Copy(j1,0,jalur1,0,j1.Length);
 			DFS(y,x);
 			bool cek = true;
-			int n = jalur1.Length-1;
-			int m = j1.Length-1;
+			int n = jalur1.Length;
+			int m = j1.Length;
 			int j,i =0;			
-			while(i<=n-1 && cek){
+			while(i<n-1 && cek){ // tidak mengecek start state
 				j= 0;
-				while(j<=m-1 && cek){
-					if(j1[m] == jalur1[n]){
+				while(j<m-1 && cek){ // tidak mengecek start state
+					if(j1[j] == jalur1[i]){
 						cek = false;
 					} else{
 						j++;
@@ -54,21 +54,12 @@ namespace Graph{
 				}
 				i++;
 			}
+			
 			if(cek){
 				Console.WriteLine("YA");
 			} else{
 				Console.WriteLine("TIDAK");
 			}
-			/*
-			foreach(int z in jalur1){
-				Console.Write(z+" ");
-			}
-			Console.WriteLine();
-			foreach(int z in j1){
-				Console.Write(z+" ");
-			}
-			Console.WriteLine();			
-			*/
 		}
 		public void DFS(int s,int d){
 			bool[] visited = new bool[simpul+1];
