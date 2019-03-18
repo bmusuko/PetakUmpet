@@ -12,6 +12,7 @@ namespace Graph{
 		private Int32[] j1;
 		private Stack<Int32> jalur;
 
+
 		public graph(int v){
 			simpul = v;
 			sisi = new List<Int32>[v+1];
@@ -33,7 +34,6 @@ namespace Graph{
 				Console.WriteLine("TIDAK");
 			}
 		}
-
 		public void kasus1(int x,int y){
 			DFS(y,1);
 			int[] jalur1 = new Int32[j1.Length];
@@ -110,16 +110,18 @@ namespace Graph{
 					y = int.Parse(tokens[1]);
 					g.addEdge(x,y);
 				}
-				int q = Convert.ToInt32(reader.ReadLine());
-				for(int i=0;i<q;i++){	
-					tokens = reader.ReadLine().Split();
-					k = int.Parse(tokens[0]);
-					x = int.Parse(tokens[1]);
-					y = int.Parse(tokens[2]);
-					if(k==0){
-						g.kasus0(x,y);	
-					} else if(k==1){
-						g.kasus1(x,y);
+				using(TextReader reader2 = new StreamReader("queue.txt")){
+					int q = Convert.ToInt32(reader2.ReadLine());
+					for(int i=0;i<q;i++){	
+						tokens = reader2.ReadLine().Split();
+						k = int.Parse(tokens[0]);
+						x = int.Parse(tokens[1]);
+						y = int.Parse(tokens[2]);
+						if(k==0){
+							g.kasus0(x,y);	
+						} else if(k==1){
+							g.kasus1(x,y);
+						}
 					}
 				}
 			}
